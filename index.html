@@ -8,9 +8,71 @@
   <title></title>
 </head>
 <body>
+  <div class="container"> <!--container div -->
+  <form id="formOne">
+    <div class="form-group">
+      <label for="input">Please enter your move!</label>
+      <input id="input" class="form-control" type="number" required>
+    </div>
+    <button type="submit" class="btn">Confirm</button>
+  </form>
+  <!-- <br>
+  <br>
+  <span class="lineOne"></span>
+  <br>
+  <span class="lineTwo"></span>
+  <br>
+  <span class="lineThree"></span> -->
 
+  <div class="board-board"> <!--Div to house board-->
+    <div class="row">
+      
+      <div class="col-4" id="1,3">
+        <span class="topRow1"></span>
+        
+      </div>
+    
+      <div class="col-4" id="2,3">
+        <span class="topRow2"></span>
+        
+      </div>
+      <div class="col-4" id="3,3">
+        <span class="topRow3"></span>
+        
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4" id="1,2">
+        <span class="middleRow1"></span>
+      </div>
+      <div class="col-4" id="2,2">
+        <span class="middleRow2"></span>
+      </div>
+      <div class="col-4" id="3,2">
+        <span class="middleRow3"></span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4" id="1,1">
+        <span class="bottomRow1"></span>
+      </div>
+      <div class="col-4" id="2,1">
+        <span class="bottomRow2"></span>
+      </div>
+      <div class="col-4" id="3,1">
+        <span class="bottomRow3"></span>
+      </div>
+    </div>
+  </div> <!--board-board closure-->
 
+  <div class="winning">
+    <h1>YOU WIN!!!<h1>
+  </div>
 
+  <div class="losing">
+    <h1>YOU LOSE<h1>
+  </div>
 
+  </div> <!--container div closure-->
 </body>
 </html>

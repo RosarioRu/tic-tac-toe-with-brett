@@ -1,0 +1,25 @@
+.col-4 {
+  border: 1px solid black;
+  width: 30%;
+  height: 100px;
+  margin: auto;
+  box-sizing: border-box;
+  text-align: center;
+  
+  
+}
+
+
+
+.row {
+  border: 1px solid black;
+  width: 30%;
+  height: 100px;
+  margin: auto;
+  box-sizing: border-box;
+}
+
+
+.winning, .losing {
+  display:none;
+}
