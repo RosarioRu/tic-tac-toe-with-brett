@@ -27,3 +27,43 @@ const cardNumbers = ""0998445533334452"";
 cardValidator(cardNumbers);
 Expected Output: [0,9,9,8,4,4,5,5,3,3,3,3,4,4,5,2] -->
 
+function computer turn 
+{
+    tactic = stratagy(board, tactic)
+
+    if (tactic === winning)
+    {
+        play winning move
+    }
+}
+
+function stratagy (board, tactic)
+    if(two os in a row, and an open space after)
+    {
+        tactic = winning
+    }
+    else if(two xs in a row, and an open space after)
+    {
+        tactic = blocking
+    }
+    else if()
+    {
+        tactic = forking
+    }
+    else if()
+    {
+        tactic = prevent fork
+    }
+    else if(5 === " ")
+    {
+        tactic = take center
+    }
+    else if(corner === " ")
+    {
+        tactic = take corner
+    }
+    else
+    {
+        tactic = take edge
+    }
+}

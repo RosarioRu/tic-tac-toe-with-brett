@@ -1,3 +1,8 @@
+h2 {
+  text-align: center;
+  margin-top: 2%;
+}
+
 .col-4 {
   border: 1px solid black;
   width: 30%;
@@ -5,21 +10,36 @@
   margin: auto;
   box-sizing: border-box;
   text-align: center;
-  
-  
 }
 
+.col-4 p {
+  text-align: center;
+  font-size:x-small;
+}
 
-
-.row {
+#top-row, #middle-row, #bottom-row{
   border: 1px solid black;
-  width: 30%;
-  height: 100px;
+  width: 70%;
+  height: auto;
   margin: auto;
   box-sizing: border-box;
 }
 
+#top-row {
+  margin-top: 10%;
+  border-bottom: 0;  
+}
 
-.winning, .losing {
+#middle-row {
+  border-bottom: 0;
+}
+
+#formOne {
+  width: 60%;
+  margin: auto;
+  margin-top: 10%;
+}
+
+.winning, .losing, .tie {
   display:none;
 }

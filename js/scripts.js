@@ -224,16 +224,20 @@ function winner (result)
   if (result === 1)
   {
     console.log("Player Wins");
-    // $(".winning").show();
+    $(".winning").show();
+    
+    
     
   }
   else if (result === 2)
   {
     console.log("Computer Wins");
+    $(".losing").show();
   }
   else
   {
     console.log("Nobody Wins");
+    $(".tie").show();
   }
   reset(board);
 }
