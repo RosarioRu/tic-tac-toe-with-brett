@@ -12,6 +12,8 @@ let board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 let tie = false;
 let result = 0;
 
+//The player enters a number in order to take their turn
+
 function playerTurn (square, board) 
 {
     square -=1;
@@ -27,17 +29,30 @@ function playerTurn (square, board)
 checkforwin(board, tie);
 }
 
+
+//The computer picks a random tile in order to take its turn
+
 function computerTurn (board)
 {
+   tactic = "null"
    tie = tieChecker(board, tie);
-    var randomNumber = Math.floor(Math.random() * 9);
-    //console.log(randomNumber);
+   tactic = stratagy(board, tactic)
+   if (tactic === "null")
+   {
+    tactic = Math.floor(Math.random() * 9);
+    console.log("No strat")
+   }
+   else
+   {
+     console.log("Strat")
+   }
+
 if (tie === false)
 {
-    if (board[randomNumber] != "X" &&  board[randomNumber] != "O")
+    if (board[tactic] != "X" &&  board[tactic] != "O")
     {
         
-        board[randomNumber] = "O";
+        board[tactic] = "O";
     }
     else 
     {
@@ -47,6 +62,8 @@ if (tie === false)
     checkforcompwin(board, tie);
 }
 }
+
+//Checks to see if the player has won, if they haven't, tells the computer to take their turn
 
 function checkforwin (board, tie)
 {
@@ -105,7 +122,7 @@ function checkforwin (board, tie)
 
   
 }
-
+//Checks to see if the computer has won
 
 function checkforcompwin (board, tie)
 {
@@ -113,7 +130,6 @@ function checkforcompwin (board, tie)
   if (tie === true) {
     winner(result);
   }
-    //Computer wins
 
     if (board[0] === "O" && board[1] === "O" && board[2] === "O")
     {
@@ -163,25 +179,277 @@ function checkforcompwin (board, tie)
 }
 
 
+//Checks to see if all tiles are full
 
 function tieChecker (board, tie)
 {
-  //tie = false;
   x = 0;
-  //console.log(x)
   board.forEach(function(element) {
   
     if (element === " ") {
       x += 1;
     } 
   });
-  console.log(x);
   if (x === 0) 
   {
     tie = true;
   }
-  //console.log(tie)
   return tie;
+}
+
+//Checks the board to find out what stratagy the computer should be using
+
+function stratagy (board, tactic)
+{
+  winOne = [board[0], board[1], board [2]]
+  winTwo = [board[3], board[4], board [5]]
+  winThree = [board[6], board[7], board [8]]
+  winFour = [board[0], board[3], board [6]]
+  winFive = [board[1], board[4], board [7]]
+  winSix = [board[2], board[5], board [8]]
+  winSeven = [board[0], board[4], board [8]]
+  winEight = [board[2], board[4], board [6]]
+
+  winOneP = 0
+  winOneC = 0
+  winTwoP = 0
+  winTwoC = 0
+  winThreeP = 0
+  winThreeC = 0
+  winFourP = 0
+  winFourC = 0
+  winFiveP = 0
+  winFiveC = 0
+  winSixP = 0
+  winSixC = 0
+  winSevenP = 0
+  winSevenC = 0
+  winEightP = 0
+  winEightC = 0
+
+  
+  tactic = threechecker (winOne, winOneP, winOneC, tactic);
+  if (tactic === "winning" || tactic === "blocking") 
+  {
+    tactic = spotter(winOne, tactic);
+
+    if (tactic === 0)
+    {
+      tactic = 0;
+      return tactic;
+    }
+    else if (tactic ===  1)
+    {
+      tactic = 1;
+      return tactic;
+    }
+    else 
+    {
+      tactic = 2;
+      return tactic;
+    }
+  }
+  tactic = threechecker (winTwo, winTwoP, winTwoC, tactic);
+  if (tactic === "winning" || tactic === "blocking") 
+  {
+    tactic = spotter(winTwo, tactic);
+
+    if (tactic === 0)
+    {
+      tactic = 3;
+      return tactic;
+    }
+    else if (tactic === 1)
+    {
+      tactic = 4;
+      return tactic;
+    }
+    else 
+    {
+      tactic = 5;
+      return tactic;
+    }
+  }
+  tactic = threechecker (winThree, winThreeP, winThreeC, tactic);
+  if (tactic === "winning" || tactic === "blocking") 
+  {
+    tactic = spotter(winThree, tactic);
+
+    if (tactic === 0)
+    {
+      tactic = 6;
+      return tactic;
+    }
+    else if (tactic === 1)
+    {
+      tactic = 7;
+      return tactic;
+    }
+    else 
+    {
+      tactic = 8;
+      return tactic;
+    }
+  }
+  tactic = threechecker (winFour, winFourP, winFourC, tactic);
+  if (tactic === "winning" || tactic === "blocking") 
+  {
+    tactic = spotter(winFour, tactic);
+
+    if (tactic === 0)
+    {
+      tactic = 0;
+      return tactic;
+    }
+    else if (tactic === 1)
+    {
+      tactic = 3;
+      return tactic;
+    }
+    else 
+    {
+      tactic = 6;
+      return tactic;
+    }
+  }
+  tactic = threechecker (winFive, winFiveP, winFiveC, tactic);
+  if (tactic === "winning" || tactic === "blocking") 
+  {
+    tactic = spotter(winFive, tactic);
+
+    if (tactic === 0)
+    {
+      tactic = 1;
+      return tactic;
+    }
+    else if (tactic === 1)
+    {
+      tactic = 4;
+      return tactic;
+    }
+    else 
+    {
+      tactic = 7;
+      return tactic;
+    }
+  }
+  tactic = threechecker (winSix, winSixP, winSixC, tactic);
+  if (tactic === "winning" || tactic === "blocking") 
+  {
+    tactic = spotter(winSix, tactic);
+
+    if (tactic === 0)
+    {
+      tactic = 2;
+      return tactic;
+    }
+    else if (tactic === 1)
+    {
+      tactic = 5;
+      return tactic;
+    }
+    else 
+    {
+      tactic = 8;
+      return tactic;
+    }
+  }
+  tactic = threechecker (winSeven, winSevenP, winSevenC, tactic);
+  if (tactic === "winning" || tactic === "blocking") 
+  {
+    tactic = spotter(winSeven, tactic);
+
+    if (tactic === 0)
+    {
+      tactic = 0;
+      return tactic;
+    }
+    else if (tactic === 1)
+    {
+      tactic = 4;
+      return tactic;
+    }
+    else 
+    {
+      tactic = 8;
+      return tactic;
+    }
+  }
+  tactic = threechecker (winEight, winEightP, winEightC, tactic);
+  if (tactic === "winning" || tactic === "blocking") 
+  {
+    tactic = spotter(winOne, tactic);
+
+    if (tactic === 0)
+    {
+      tactic = 2;
+      return tactic;
+    }
+    else if (tactic === 1)
+    {
+      tactic = 4;
+      return tactic;
+    }
+    else 
+    {
+      tactic = 6;
+      return tactic;
+    }
+  }
+
+  
+  
+
+  //Sets tactic back 
+  tactic = "null";
+  return tactic;
+}
+
+//Checks a possible win line to see if either player is one move away from winning
+
+function threechecker (line, player, comp, tactic)
+{
+  non = 0;
+  line.forEach(function(element) {
+  if (element === "X") {
+    player += 1;
+  }
+  else if (element === "O") {
+    comp += 1;
+  }
+  else {
+    non += 1;
+  }
+  });
+console.log(comp, player, non);
+if (comp === 2 && non !== 0) {
+
+  tactic = "winning"
+  return tactic;
+}
+else if (player === 2 && non !== 0) {
+
+  tactic = "blocking"
+  return tactic;
+}
+tactic = "null";
+return tactic;
+}
+
+//Checks a win line to find out which tile the move needs to be made in order to win or block.
+
+function spotter (line, tactic)
+{
+  console.log("Spotter Called!")
+  for (i = 0; i < line.length; i++)
+  {
+    if (line[i] === " ")
+    {
+      
+      tactic = (i);
+    }
+  }
+  return tactic;
 }
 
 
@@ -258,36 +526,3 @@ function reset (board)
   $(".bottomRow3").text(board[8]); 
 }
    
-  
-/*
-    $("#1,3").click
-      // $("#operators").click(function() {
-      //   $(".definition#operators").toggle();
-
-        running(1)
-      });
-      $("#2,3").click(function() {
-        running (2)
-      });
-      $("#3,3").click(function() {
-        running (3)
-      });
-      $("#1,2").click(function() {
-        running (4)
-      });
-      $("#2,2").click(function() {
-        running (5)
-      });
-      $("#3,2").click(function() {
-        running (6)
-      });
-      $("#3,1").click(function() {
-        running (7)
-      });
-      $("#3,2").click(function() {
-        running (8)
-      });
-      $("#3,3").click(function() {
-        running (9)
-      });
-});*/
